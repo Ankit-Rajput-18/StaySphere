@@ -11,8 +11,10 @@ min-height: 100vh;
 /* navbar */
 .navbar{
     background-color: rgb(247, 247, 247);
-    height: 5rem;
+    min-height: 5rem; /* optional */
+    padding: 0.5rem 1rem; /* adds spacing for stacked items on mobile */
 }
+
 .fa-compass{
     color: #fe424d;
     font-size: 2rem;
@@ -105,9 +107,21 @@ height: 30vh;
 }
 
 
-/* map */ 
-#map{
-    height: 175px;
-    width: 220px;
-    color: #fe424d;
+@media (max-width: 768px){
+    .search-input{
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        width: 100%; /* fill width */
+        margin-bottom: 0.5rem; /* spacing under button */
+    }
+
+    .btn-search{
+        width: 100%; /* full width on mobile */
+        padding: 0.5rem;
+    }
+
+    .d-flex{
+        flex-direction: column; /* stack input + button */
+        gap: 0.5rem;
+    }
 }
