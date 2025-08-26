@@ -1,4 +1,4 @@
-# 🌍 Wanderlust — Event & Stay Booking Platform
+# 🌍 StaySphere — Event & Stay Booking Platform
 
 A full-stack Airbnb-style web application for discovering and booking stays. Built with Express, MongoDB, EJS, and integrated with cloud services for scalable deployment. Designed for recruiters, developers, and travel enthusiasts.
 
