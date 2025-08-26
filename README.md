@@ -13,7 +13,6 @@ A full-stack Airbnb-style web application for discovering and booking stays. Bui
 - 📸 Image upload via Cloudinary (optional AWS version available)
 - 🔐 Role-based access control for secure operations
 - 📱 Responsive design for mobile and desktop
-- 🗺️ Map integration (Mappls-ready architecture)
 - 🧾 Flash messages and error handling for smooth UX
 
 ---
