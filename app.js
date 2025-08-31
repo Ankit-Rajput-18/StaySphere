@@ -114,6 +114,12 @@ app.use((err, req, res, next) => {
   res.status(status).render("error.ejs", { message });
 });
 
+app.use((req, res, next) => {
+  res.locals.search = ""; // hamesha ek default empty string
+  next();
+});
+
+
 app.listen(port, () => {
   console.log(`server is listening on port 3000 `);
 });

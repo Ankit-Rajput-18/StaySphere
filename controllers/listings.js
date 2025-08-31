@@ -2,10 +2,32 @@ const Listing = require("../models/listing.js");
 const Review = require("../models/review.js");
 const { listingSchema, reviewSchema } = require("../schema.js");
 
+
+
 module.exports.index = async (req, res) => {
-  const alllisting = await Listing.find({});
-  res.render("listings/index.ejs", { alllisting });
+  const { category, search } = req.query;
+  let alllisting;
+
+  if (search) {
+    const regex = new RegExp(search, "i"); 
+    alllisting = await Listing.find({
+      $or: [
+        { category: regex },
+        { title: regex },
+        { location: regex },
+        { country: regex }
+      ]
+    });
+  } else if (category) {
+    alllisting = await Listing.find({ category });
+  } else {
+    alllisting = await Listing.find({});
+  }
+
+  res.render("listings/index.ejs", { alllisting, category, search });
 };
+
+
 
 module.exports.renderNewForm = (req, res, next) => {
   res.render("listings/new.ejs");
@@ -68,7 +90,7 @@ module.exports.renderListing = async (req, res) => {
     req.flash("error", " Listing you requested does not exists ");
     return res.redirect("/listings");
   }
-  res.render("listings/show.ejs", { listing });
+  res.render("listings/show.ejs", { listing , search: ""  });
 };
 
 module.exports.updateListing = async (req, res) => {

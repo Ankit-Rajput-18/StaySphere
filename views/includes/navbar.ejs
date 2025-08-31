@@ -35,13 +35,30 @@
         <a class="nav-link" href="/listings">Explore</a>
       </div>
       <div class="navbar ms-auto">
-       <form class="d-flex flex-column flex-md-row w-100" role="search">
-    <input class="form-control me-md-2 mb-2 mb-md-0 search-input" type="search" placeholder="Search Destination" />
-    <button class="btn btn-search d-flex align-items-center justify-content-center" type="submit">
-        <i class="fa-solid fa-magnifying-glass me-2"></i>
-        Search
-    </button>
+      <form action="/listings" method="get" class="d-flex flex-column flex-md-row w-100" role="search">
+  <div class="position-relative w-100">
+    <input 
+      id="searchInput"
+      class="form-control me-md-2 mb-2 mb-md-0 search-input" 
+      type="search" 
+      name="search"
+      placeholder="Search Destination"
+value="<%= (locals.search || '') %>"
+    />
+    <% if (search) { %>
+      <!-- Clear Button dikhega only jab search ho -->
+      <button type="button" id="clearSearch" class="btn position-absolute top-50 end-0 translate-middle-y me-2 p-0 border-0 bg-transparent">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    <% } %>
+  </div>
+  <button class="btn btn-search d-flex align-items-center justify-content-center ms-2" type="submit">
+      <i class="fa-solid fa-magnifying-glass me-2"></i>
+      Search
+  </button>
 </form>
+
+
 
       </div>
       <div class="navbar-nav ms-auto">
@@ -56,3 +73,14 @@
     </div>
   </div>
 </nav>
+<script>
+  const clearBtn = document.getElementById("clearSearch");
+  const searchInput = document.getElementById("searchInput");
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      searchInput.value = "";    // input empty kar do
+      searchInput.form.submit(); // form submit ho jaye → sabhi listings dikh jaye
+    });
+  }
+</script>
