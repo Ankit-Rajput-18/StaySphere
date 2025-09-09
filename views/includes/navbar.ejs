@@ -45,12 +45,12 @@
       placeholder="Search Destination"
 value="<%= (locals.search || '') %>"
     />
-    <% if (search) { %>
-      <!-- Clear Button dikhega only jab search ho -->
-      <button type="button" id="clearSearch" class="btn position-absolute top-50 end-0 translate-middle-y me-2 p-0 border-0 bg-transparent">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    <% } %>
+  <% if (locals.search) { %>
+  <button type="button" id="clearSearch" class="btn position-absolute top-50 end-0 translate-middle-y me-2 p-0 border-0 bg-transparent">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+<% } %>
+
   </div>
   <button class="btn btn-search d-flex align-items-center justify-content-center ms-2" type="submit">
       <i class="fa-solid fa-magnifying-glass me-2"></i>

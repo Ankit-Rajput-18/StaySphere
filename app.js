@@ -115,9 +115,10 @@ app.use((err, req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  res.locals.search = ""; // hamesha ek default empty string
+  res.locals.search = req.query.search || ""; // agar query hai toh vo, warna empty string
   next();
 });
+
 
 
 app.listen(port, () => {
